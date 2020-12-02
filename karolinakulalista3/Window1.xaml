@@ -38,7 +38,7 @@
             <TextBox Height="40" Width="200" x:FieldModifier="public" Name="imie2"></TextBox>
             <TextBox Height="40" Width="200" x:FieldModifier="public" Name="nazwisko2"></TextBox>
             <TextBox Height="40" Width="200" x:FieldModifier="public" Name="pesel2"></TextBox>
-            <TextBox Height="40" Width="200" x:FieldModifier="public" Name="rokur2"></TextBox>
+            <TextBox Height="40" Width="200" x:FieldModifier="public" Name="rokur2" TextChanged="rokur2_TextChanged"></TextBox>
         </StackPanel>
 
         <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">

@@ -157,5 +157,10 @@ namespace karolinakulalista3
                 zdjecie2.Source = new BitmapImage(fileuri);
             }
         }
+
+        private void rokur2_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }
