@@ -48,10 +48,14 @@
         </StackPanel>
 
         <StackPanel Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button Content="Edytuj" Height="35" Width="80" Background="LightBlue" Click="Button_Click_3"></Button>
-            <Button Content="Zmiana zdjęcia" Height="35" Width="80" Background="LightBlue" Click="Button_Click_4"></Button>
+            <Button Content="Edytuj" Height="35" Width="90" Background="LightBlue" Click="Button_Click_3"></Button>
+            <Button Content="Zmiana zdjęcia" Height="35" Width="90" Background="LightBlue" Click="Button_Click_4"></Button>
+            <Button Content="Dodaj do bazy" Height="35" Width="90" Background="LightBlue" Click="Button_Click_5"></Button>
+            <Button Content="Zliczanie" Height="35" Width="90" Background="LightBlue" Click="zliczanie_1"></Button>
+            <Button Content="Tabelaryczna" Height="35" Width="90" Background="LightBlue" Click="tab_1"></Button>
         </StackPanel>
 
+        <TextBox x:Name="ss" Width="60" Height="30" Grid.Column="2" Margin="182,150,22,0"/>
         <Button x:Name="zapisz1" Grid.Column="0" Grid.Row="2" FontSize="20" Content="Zapisz" Background="LightBlue" Click="Button_Click_2" Margin="0,0,0,0.5"></Button>
         <Button x:Name="wczytaj1" Grid.Column="1" Grid.Row="2" FontSize="20" Content="Wczytaj" Background="LightBlue" Click="Button_Click_1" Margin="0,0,0,0.5"></Button>
         <Button x:Name="zamknij1" Grid.Column="2" Grid.Row="2" FontSize="20" Content="Zamknij" Background="LightBlue" Click="Button_Click" Grid.ColumnSpan="2" Margin="0,0,0.5,0.5"></Button>

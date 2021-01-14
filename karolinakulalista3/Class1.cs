@@ -18,8 +18,8 @@ namespace karolinakulalista3
     {
         public string imie { get; set;}
         public string nazwisko { get; set;}
-        public long pesel { get; set;}
-        public int rokur { get; set;}
+        public string pesel { get; set;}
+        public string rokur { get; set;}
         public string specjalizacja { get; set;}
         public string oddzial { get; set;}
 

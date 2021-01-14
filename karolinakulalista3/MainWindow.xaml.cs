@@ -16,6 +16,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace karolinakulalista3
 {
@@ -25,10 +27,12 @@ namespace karolinakulalista3
     public partial class MainWindow : Window
     {
         public static ObservableCollection<Class1> ludzie = new ObservableCollection<Class1>();
+        BazaDanych bb = new BazaDanych();
 
         public MainWindow()
         {
             InitializeComponent();
+            bb.createTable();
         }
 
         public ObservableCollection<Class1> Add()
@@ -39,8 +43,8 @@ namespace karolinakulalista3
                 {
                     imie = imie.Text,
                     nazwisko = nazwisko.Text,
-                    pesel = long.Parse(pesel.Text),
-                    rokur = int.Parse(rokur.Text),
+                    pesel = pesel.Text,
+                    rokur = rokur.Text,
                     specjalizacja = specjalizacja.Text,
                     oddzial = oddzial.Text,
                     zdjecie = (BitmapSource)zdjecie.Source
@@ -95,7 +99,7 @@ namespace karolinakulalista3
         private void rokur_TextChanged(object sender, TextCompositionEventArgs e)
         {
             e.Handled = new Regex("[^0-9]+").IsMatch(e.Text) || rokur.Text.Length > 3 || new Regex("19[5-9]/d|200[0-2]").IsMatch(e.Text);
-            if (new Regex("19[5-9]/d|200[0-2]").IsMatch(e.Text))
+            if (new Regex("199[5-9]/d|200[0-2]").IsMatch(e.Text))
             {
                 MessageBox.Show("Wpisz tylko cyfry");
             }

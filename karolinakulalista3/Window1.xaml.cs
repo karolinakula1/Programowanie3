@@ -17,6 +17,7 @@ using System.Xml.Serialization;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace karolinakulalista3
 {
@@ -26,8 +27,8 @@ namespace karolinakulalista3
     public partial class Window1 : Window
     {
         XmlSerializer ab;
-        ObservableCollection<Class1> people; 
-        
+        ObservableCollection<Class1> people;
+
         public Window1()
         {
             InitializeComponent();
@@ -47,7 +48,7 @@ namespace karolinakulalista3
         {
             try
             {
-                FileStream fs = new FileStream("C:\\Users\\Karolina\\source\\repos\\karolinakulalista3\\karolinakulalista3\\XMLFile1.xml", FileMode.Create, FileAccess.Write);
+                FileStream fs = new FileStream("C:\\Users\\Karolina\\Desktop\\karolinakulalista3\\XMLFile1.xml", FileMode.Create, FileAccess.Write);
 
                 ab.Serialize(fs, MainWindow.ludzie);
                 fs.Close();
@@ -63,7 +64,7 @@ namespace karolinakulalista3
         {
             try
             {
-                FileStream fs = new FileStream("C:\\Users\\Karolina\\source\\repos\\karolinakulalista3\\karolinakulalista3\\XMLFile1.xml", FileMode.Open, FileAccess.Read);
+                FileStream fs = new FileStream("C:\\Users\\Karolina\\Desktop\\karolinakulalista3\\XMLFile1.xml", FileMode.Open, FileAccess.Read);
                 ObservableCollection<Class1> wczytanie = new ObservableCollection<Class1>();
                 wczytanie = (ObservableCollection<Class1>)ab.Deserialize(fs);
                 MainWindow.ludzie.Clear();
@@ -90,8 +91,8 @@ namespace karolinakulalista3
                     Class1 class1 = (Class1)listaosob.SelectedItem;
                     string imie = class1.imie;
                     string nazwisko = class1.nazwisko;
-                    long pesel = class1.pesel;
-                    int rokur = class1.rokur;
+                    string pesel = class1.pesel;
+                    string rokur = class1.rokur;
                     string specjalizacja = class1.specjalizacja;
                     string oddzial = class1.oddzial;
                     ImageSource zdjecie = class1.zdjecie;
@@ -132,8 +133,8 @@ namespace karolinakulalista3
             {
                 class1.imie = imie2.Text;
                 class1.nazwisko = nazwisko2.Text;
-                class1.pesel = long.Parse(pesel2.Text);
-                class1.rokur = int.Parse(rokur2.Text);
+                class1.pesel = pesel2.Text;
+                class1.rokur = rokur2.Text;
                 class1.specjalizacja = specjalizacja2.Text;
                 class1.oddzial = oddzial2.Text;
                 class1.zdjecie = (BitmapSource)zdjecie2.Source;
@@ -161,6 +162,26 @@ namespace karolinakulalista3
         private void rokur2_TextChanged(object sender, TextChangedEventArgs e)
         {
 
+        }
+
+        //dodaj do bazy
+
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+            BazaDanych bb = new BazaDanych();
+            bb.insertBase(imie2.Text, nazwisko2.Text, pesel2.Text, rokur2.Text, specjalizacja2.Text, oddzial2.Text);
+        }
+
+        private void zliczanie_1(object sender, RoutedEventArgs e)
+        {
+            BazaDanych bb = new BazaDanych();
+            bb.zliczanie();
+        }
+
+        private void tab_1(object sender, RoutedEventArgs e)
+        {
+            BazaDanych bb = new BazaDanych();
+            bb.tabelaryczna(people,ss.Text);
         }
     }
 }
